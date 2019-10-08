@@ -34,14 +34,28 @@ class BooksController < ApplicationController
             # render json: user.errors.full_messages, status: :unprocessable_e
             # show user the new book form
             render :new
-        ntity
-
         end
         # render json: "creating book"
     end
 
     def new
+        @book = Book.new
         render :new
+    end
+
+    def edit
+        @book = Book.find_by(id: params[:id])
+        render :edit
+    end
+
+    def update
+        @book = Book.find_by(id: params[:id])
+    
+        if @book.update_attributes(book_params)
+            redirect_to book_url(@book)
+        else
+            render :edit
+        end
     end
 
     private

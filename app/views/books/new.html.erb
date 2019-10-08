@@ -3,6 +3,10 @@
 <!-- action: url to which we want to send data -->
 <!-- method: httmp method we want to use -->
 <!-- <form action="/books" method="post"> -->
+
+<%= render 'form', action: :new, book: @book %>
+
+<!-- 
 <form action=" <%= books_url %> " method="post">
     <label for="title">Title</label>
     <input id="title" type="text" name="book[title]">
@@ -38,3 +42,4 @@
     <input type="submit" value="Add book to library">
 </form>
 
+-->

@@ -1,0 +1,56 @@
+
+
+<!-- Things to change:
+        - action
+        - hidden input patch
+        - pre-filled values
+        - submit button
+-->
+
+<% if action == :edit %>
+    <% action_url = book_url(@book) %>
+<% else %>
+    <% action_url = books_url %>
+<% end %>
+
+<form action="<%= action_url %> " method="post">
+    <% if action == :edit %>
+        <input type="hidden" name="_method" value="PATCH">
+    <% end %>
+
+    <label for="title">Title</label>
+    <input id="title" type="text" name="book[title]" value="<%= book.title %>">
+
+    <br>
+
+    <label for="author">Author</label>
+    <input id="author" type="text" name="book[author]" value="<%= book.author%>">
+
+    <br>
+
+    <label for="year">Year</label>
+    <input id="year" type="text" name="book[year]" value="<%= book.year%>">
+
+    <br>
+
+    <label for="category">Category</label>
+    <select id="category" name="book[category]">
+        <option disabled <%= book.category ? "" : "selected"%> >-- Please select --</option>
+        <option value="fiction" <%= book.category == "fiction" ? "selected" : ""%> >Fiction</option>
+        <option value="nonfiction" <%= book.category == "nonfiction" ? "selected" : ""%> >Nonfiction</option>
+        <option value="cookbook" <%= book.category == "cookbook" ? "selected" : ""%> >Cookbook</option>
+        <option value="memoir" <%= book.category == "memoir" ? "selected" : ""%> >Memoir</option>
+    </select>
+
+    <br><br>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="book[description]">
+        <%= book.description%>
+    </textarea>
+
+    <br>
+
+    <input type="submit" value="<%=(action ==:edit) ? 'update book' : 'add book' %>">
+</form>
+

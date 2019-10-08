@@ -1,9 +1,30 @@
 <h1>All the books!<h1>
 
 
-
+<!--
 <ul>
     <% @books.each do |book| %>
         <li><%= book.title %></li>
     <% end %>
+</ul>
+-->
+
+<!--
+<ul>
+    <% @books.each do |book| %>
+        <%= render 'book', book: book%>
+    <% end %>
+</ul>
+-->
+
+<!--
+<ul>
+    <% @books.each do |book| %>
+        <%= render book%>
+    <% end %>
+</ul>
+-->
+
+<ul>
+    <%= render @books %> 
 </ul>
